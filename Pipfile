@@ -6,6 +6,8 @@ verify_ssl = true
 [dev-packages]
 
 [packages]
+dash = "*"
+holoviews = "*"
 pandas = "*"
 numpy = "*"
 jupyterlab = "*"
@@ -15,6 +17,7 @@ plotly-express = "*"
 tqdm = "*"
 joblib = "*"
 dask = {extras = ["dataframe"], version = "*"}
+dash-bootstrap-components = "*"
 
 [requires]
 python_version = "3.7"
