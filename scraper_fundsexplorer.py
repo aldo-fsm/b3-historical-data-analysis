@@ -23,10 +23,17 @@ def getData(ticker):
 
 soup = BeautifulSoup(getData('irdm11'))
 
-dividendChartWrapper = soup.find(attrs=dict(id='dividends-chart-wrapper'))
-dividendScript = dividendChartWrapper.find('script')
-dividendScriptContent = dividendScript.contents[0]
-dividendData = json.loads(dividendScriptContent.split('data: ')[1].split(', options:')[0])
+def extractChartData(chartWrapperId):
+    chartWrapper = soup.find(attrs=dict(id=chartWrapperId))
+    script = chartWrapper.find('script')
+    scriptContent = script.contents[0]
+    data = json.loads(scriptContent.split('data: ')[1].split(', options:')[0])
+    return data
+
+dividendData = extractChartData('dividends-chart-wrapper')
+yieldData = extractChartData('yields-chart-wrapper')
+
 st.write(
-    dividendData
+    dividendData,
+    yieldData
 )
