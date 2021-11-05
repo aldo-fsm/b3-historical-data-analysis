@@ -15,6 +15,7 @@ plotly-express = "*"
 tqdm = "*"
 joblib = "*"
 beautifulsoup4 = "*"
+dask = {extras = ["dataframe"], version = "*"}
 
 [requires]
 python_version = "3.7"

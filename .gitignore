@@ -128,5 +128,5 @@ dmypy.json
 # Pyre type checker
 .pyre/
 
-datasets/raw
-datasets/parsed
+datasets/*
+!datasets/__init__.py
