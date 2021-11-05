@@ -16,6 +16,7 @@ matplotlib = "*"
 plotly-express = "*"
 tqdm = "*"
 joblib = "*"
+beautifulsoup4 = "*"
 dask = {extras = ["dataframe"], version = "*"}
 dash-bootstrap-components = "*"
 
