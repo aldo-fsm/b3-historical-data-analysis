@@ -27,7 +27,7 @@ def extractChartData(soup, chartWrapperId):
 
 def extractData(ticker):
     html = getPage(ticker)
-    soup = BeautifulSoup(html)
+    soup = BeautifulSoup(html, features='html.parser')
 
     dividendData = extractChartData(soup, 'dividends-chart-wrapper')
     yieldData = extractChartData(soup, 'yields-chart-wrapper')
@@ -49,7 +49,7 @@ def extractAll(tickers, targetDir='./'):
     dividendDf = tryGetDataset(dividendDatasetPath)
     yieldDf = tryGetDataset(yieldDatasetPath)
     for ticker in tqdm(tickers):
-        if ticker in yieldDf.ticker.values:
+        if ticker in yieldDf['ticker'].tolist():
             continue
         try:
             dividendData, yieldData = extractData(ticker)
