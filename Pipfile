@@ -19,6 +19,8 @@ joblib = "*"
 beautifulsoup4 = "*"
 dask = {extras = ["dataframe"], version = "*"}
 dash-bootstrap-components = "*"
+pycoingecko = "*"
+python-binance = "*"
 
 [requires]
 python_version = "3.7"
