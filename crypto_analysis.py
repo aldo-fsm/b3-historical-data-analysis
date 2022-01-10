@@ -4,6 +4,7 @@ import pandas as pd
 import numpy as np
 from pycoingecko import CoinGeckoAPI
 import plotly_express as px
+from datetime import datetime
 
 # https://github.com/binance/binance-spot-api-docs
 # https://python-binance.readthedocs.io/en/latest/
@@ -28,7 +29,10 @@ def getKlines():
         'taker_buy_quote_asset_volume',
         'Ignore.',
     ]
-    return pd.DataFrame(klines, columns=columns).astype(float)
+    df = pd.DataFrame(klines, columns=columns).astype(float)
+    df['open_time'] = df['open_time'].apply(lambda timestamp: datetime.fromtimestamp(timestamp/1000))
+    df['close_time'] = df['close_time'].apply(lambda timestamp: datetime.fromtimestamp(timestamp/1000))
+    return df
 klines = getKlines()
 # klines
 st.write(
